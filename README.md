@@ -12,7 +12,7 @@ A full-stack web application that provides personalized mutual fund recommendati
 
 | Service | URL |
 |---|---|
-| 🖥️ **Frontend (Live App)** | [https://mutual-funds-recommendation-website.vercel.app](https://mutual-funds-recommendation-website.vercel.app) |
+| 🖥️ **Frontend (Live App)** | [https://fundwise-a-mutual-funds-recommendat.vercel.app](https://fundwise-a-mutual-funds-recommendat.vercel.app) |
 | ⚙️ **Backend API** | [https://fundwise-a-mutual-funds-recommendation.onrender.com](https://fundwise-a-mutual-funds-recommendation.onrender.com) |
 | 📖 **API Docs (Swagger)** | [https://fundwise-a-mutual-funds-recommendation.onrender.com/docs](https://fundwise-a-mutual-funds-recommendation.onrender.com/docs) |
 
