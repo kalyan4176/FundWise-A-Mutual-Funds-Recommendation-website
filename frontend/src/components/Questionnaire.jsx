@@ -60,7 +60,7 @@ const Questionnaire = ({ onSubmit }) => {
                             </div>
                         </div>
                         <div className="mt-8 flex justify-end">
-                            <button onClick={nextStep} className="bg-primary hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
+                            <button onClick={nextStep} className="bg-primary hover:bg-[#1a304e] text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
                                 Next
                             </button>
                         </div>
@@ -109,7 +109,7 @@ const Questionnaire = ({ onSubmit }) => {
                             <button onClick={prevStep} className="text-gray-600 hover:text-gray-800 font-semibold py-3 px-6">
                                 Back
                             </button>
-                            <button onClick={nextStep} className="bg-primary hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
+                            <button onClick={nextStep} className="bg-primary hover:bg-[#1a304e] text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
                                 Next
                             </button>
                         </div>
@@ -159,7 +159,7 @@ const Questionnaire = ({ onSubmit }) => {
                             <button onClick={prevStep} className="text-gray-600 hover:text-gray-800 font-semibold py-3 px-6">
                                 Back
                             </button>
-                            <button onClick={nextStep} className="bg-primary hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
+                            <button onClick={nextStep} className="bg-primary hover:bg-[#1a304e] text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
                                 Next
                             </button>
                         </div>
@@ -174,7 +174,7 @@ const Questionnaire = ({ onSubmit }) => {
                                 <label className="block text-sm font-medium text-gray-700 mb-4">How much risk are you willing to take?</label>
                                 <div className="grid grid-cols-1 gap-4">
                                     {['Low', 'Medium', 'High'].map(risk => (
-                                        <label key={risk} className={`cursor-pointer border-2 rounded-xl p-4 flex items-center justify-between transition-all ${formData.risk_appetite === risk ? 'border-primary bg-indigo-50' : 'border-gray-200 hover:border-indigo-200'}`}>
+                                        <label key={risk} className={`cursor-pointer border-2 rounded-xl p-4 flex items-center justify-between transition-all ${formData.risk_appetite === risk ? 'border-primary bg-[#1d3557]/5' : 'border-gray-200 hover:border-[#1d3557]/30'}`}>
                                             <div className="flex items-center">
                                                 <input
                                                     type="radio"
@@ -199,7 +199,7 @@ const Questionnaire = ({ onSubmit }) => {
                             <button onClick={prevStep} className="text-gray-600 hover:text-gray-800 font-semibold py-3 px-6">
                                 Back
                             </button>
-                            <button onClick={handleSubmit} className="bg-gradient-to-r from-primary to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
+                            <button onClick={handleSubmit} className="bg-gradient-to-r from-primary to-[#457b9d] hover:from-[#1a304e] hover:to-[#356280] text-white font-bold py-3 px-8 rounded-xl transition-all transform hover:scale-105 shadow-lg">
                                 Get Recommendations
                             </button>
                         </div>

@@ -141,9 +141,9 @@ const RealReturnsCalculator = () => {
                     <h3 className="text-xl font-semibold text-gray-700 mb-6 text-center">Projected Value after {years} Years</h3>
 
                     <div className="space-y-8">
-                        <div className="bg-indigo-50 p-4 rounded-lg">
+                        <div className="bg-[#1d3557]/5 p-4 rounded-lg">
                             <p className="text-sm text-gray-600 mb-1">Nominal Maturity Value</p>
-                            <p className="text-3xl font-bold text-indigo-600">{formatCurrency(results.nominalValue)}</p>
+                            <p className="text-3xl font-bold text-primary">{formatCurrency(results.nominalValue)}</p>
                             <p className="text-xs text-gray-500 mt-1">Amount visible in your account</p>
                         </div>
 

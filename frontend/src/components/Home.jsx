@@ -4,17 +4,17 @@ const Home = ({ onStart }) => {
     return (
         <div className="animate-fade-in">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-3xl p-8 md:p-12 text-white mb-12 shadow-xl">
+            <div className="bg-gradient-to-r from-[#1d3557] to-[#457b9d] rounded-3xl p-8 md:p-12 text-white mb-12 shadow-xl">
                 <div className="max-w-3xl">
                     <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
                         Grow Your Wealth with Mutual Funds
                     </h1>
-                    <p className="text-lg md:text-xl text-indigo-100 mb-8 leading-relaxed">
+                    <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed">
                         Professional management, diversification, and the power of compounding—all in one investment vehicle. Start your journey today.
                     </p>
                     <button
                         onClick={onStart}
-                        className="bg-white text-indigo-600 font-bold py-3 px-8 rounded-xl hover:bg-indigo-50 transition-all transform hover:scale-105 shadow-lg"
+                        className="bg-white text-[#1d3557] font-bold py-3 px-8 rounded-xl hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
                     >
                         Find Your Fund Now
                     </button>
@@ -27,7 +27,7 @@ const Home = ({ onStart }) => {
                 <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h3 className="text-2xl font-bold text-indigo-600 mb-4">Beating Inflation is Key</h3>
+                            <h3 className="text-2xl font-bold text-[#1d3557] mb-4">Beating Inflation is Key</h3>
                             <p className="text-gray-600 text-lg leading-relaxed mb-6">
                                 Inflation erodes the purchasing power of your money over time. If your money is sitting idle in a savings account earning 3-4%, and inflation is at 6%, you are effectively losing wealth.
                             </p>
@@ -35,7 +35,7 @@ const Home = ({ onStart }) => {
                                 Investing allows your money to grow at a rate that outpaces inflation, ensuring that your future self can afford the same lifestyle, if not better, than you do today.
                             </p>
                         </div>
-                        <div className="bg-indigo-50 p-6 rounded-xl">
+                        <div className="bg-[#1d3557]/5 p-6 rounded-xl">
                             <h4 className="text-xl font-bold text-gray-800 mb-4">The Power of Real Returns</h4>
                             <ul className="space-y-4">
                                 <li className="flex items-center space-x-3">
@@ -116,7 +116,7 @@ const Home = ({ onStart }) => {
                         }
                     ].map((item, index) => (
                         <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow">
-                            <div className="bg-indigo-50 w-12 h-12 rounded-lg flex items-center justify-center text-primary mb-4">
+                            <div className="bg-[#1d3557]/10 w-12 h-12 rounded-lg flex items-center justify-center text-primary mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                                 </svg>

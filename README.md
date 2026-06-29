@@ -1,145 +1,129 @@
-# Fundwise — Mutual Fund Recommendation System
+# FundWise - Mutual Fund Recommendation System
 
-![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
-![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render)
-![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.136-009688?logo=fastapi)
+FundWise is a full-stack web application that provides personalized mutual fund recommendations based on user financial profiles. Using a Machine Learning recommendation algorithm, FundWise evaluates factors such as age, income, risk tolerance, and investment horizon to match investors with suitable funds. The platform also features interactive calculators and educational resources to help users make informed decisions.
 
-A full-stack web application that provides personalized mutual fund recommendations based on user financial profiles using Machine Learning. It also includes educational content and financial calculators (SIP, SWP, Real Returns) to assist investors.
-
-## 🌐 Live Demo
+## Live Demo
 
 | Service | URL |
-|---|---|
-| 🖥️ **Frontend (Live App)** | [https://fundwise-a-mutual-funds-recommendat.vercel.app](https://fundwise-a-mutual-funds-recommendat.vercel.app) |
-| ⚙️ **Backend API** | [https://fundwise-a-mutual-funds-recommendation.onrender.com](https://fundwise-a-mutual-funds-recommendation.onrender.com) |
-| 📖 **API Docs (Swagger)** | [https://fundwise-a-mutual-funds-recommendation.onrender.com/docs](https://fundwise-a-mutual-funds-recommendation.onrender.com/docs) |
+| --- | --- |
+| **Frontend Application** | [https://fundwise-a-mutual-funds-recommendat.vercel.app](https://fundwise-a-mutual-funds-recommendat.vercel.app) |
+| **Backend API** | [https://fundwise-a-mutual-funds-recommendation.onrender.com](https://fundwise-a-mutual-funds-recommendation.onrender.com) |
+| **API Documentation (Swagger)** | [https://fundwise-a-mutual-funds-recommendation.onrender.com/docs](https://fundwise-a-mutual-funds-recommendation.onrender.com/docs) |
 
-> **Note:** The backend is hosted on Render's free tier and may take **30–50 seconds to wake up** after a period of inactivity. This is a one-time delay — subsequent requests are fast.
-
----
-
-## ✨ Features
-
--   **Personalized Recommendations**: Uses a K-Nearest Neighbors (KNN) algorithm to match user profiles (age, income, risk tolerance, etc.) with suitable mutual funds.
--   **Educational Hub**: A dedicated Home page explaining Mutual Funds, their advantages, and comparisons with traditional investments.
--   **Financial Calculators**:
-    -   **SIP Calculator**: Estimate returns on Systematic Investment Plans.
-    -   **SWP Calculator**: Plan withdrawals with Systematic Withdrawal Plans.
-    -   **Real Returns Calculator**: Calculate inflation-adjusted returns to understand true purchasing power.
--   **Responsive Design**: Fully responsive UI with a mobile-friendly navigation drawer.
+*Note: The backend service is hosted on Render's free tier and may require 30 to 50 seconds to spin up after a period of inactivity. Subsequent requests are processed instantly.*
 
 ---
 
-## 🛠️ Tech Stack
+## Features
+
+- **Personalized Recommendations**: Uses a K-Nearest Neighbors (KNN) algorithm to match user profiles (age, income, risk appetite) with suitable mutual funds.
+- **Educational Resources**: An integrated home guide explaining the structure of mutual funds, benefits of investing, and comparative analysis with traditional instruments.
+- **Financial Calculators**:
+  - **SIP Calculator**: Estimates future returns on Systematic Investment Plans.
+  - **SWP Calculator**: Simulates Systematic Withdrawal Plan schedules and final balances.
+  - **Real Returns Calculator**: Adjusts nominal investment returns for inflation to reveal actual purchasing power.
+- **Responsive Interface**: Optimised layout supporting desktop, tablet, and mobile screens.
+
+---
+
+## Tech Stack
 
 ### Frontend
--   **React.js**: Component-based UI library.
--   **Tailwind CSS**: Utility-first CSS framework for styling and responsiveness.
--   **Vite**: Fast build tool and development server.
--   **Axios**: For making HTTP requests to the backend.
+- **React.js**: UI framework.
+- **Tailwind CSS**: styling and responsive design.
+- **Vite**: Build tool and local development environment.
+- **Axios**: HTTP client for API requests.
 
 ### Backend
--   **FastAPI**: High-performance web framework for building APIs with Python.
--   **Scikit-learn**: For implementing the KNN recommendation algorithm.
--   **Pandas**: For data manipulation and analysis.
--   **Uvicorn**: ASGI server for running the FastAPI application.
+- **FastAPI**: Python API framework.
+- **Scikit-learn**: Recommendation engine implementation.
+- **Pandas**: Data manipulation and preprocessing.
+- **Uvicorn**: ASGI server implementation.
 
-### Deployment
--   **Vercel** — Frontend hosting with automatic CI/CD from GitHub
--   **Render** — Backend Python web service with automatic CI/CD from GitHub
+### Infrastructure
+- **Vercel**: Frontend deployment and hosting.
+- **Render**: Backend service deployment.
 
 ---
 
-## 🚀 Installation & Local Setup
+## Installation & Local Setup
 
 ### Prerequisites
--   Node.js and npm installed.
--   Python 3.8+ installed.
+- Node.js and npm
+- Python 3.8 or higher
 
-### 1. Backend Setup
-
+### 1. Backend Configuration
 Navigate to the backend directory:
 ```bash
 cd backend
 ```
 
-Install the required Python packages:
+Install the dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the backend server:
+Start the local server:
 ```bash
 uvicorn main:app --reload
 ```
-The backend API will start at `http://localhost:8000`.
+The API documentation will be available at `http://localhost:8000/docs`.
 
-### 2. Frontend Setup
-
-Open a new terminal and navigate to the frontend directory:
+### 2. Frontend Configuration
+Navigate to the frontend directory:
 ```bash
 cd frontend
 ```
 
-Create a `.env` file:
+Configure the environment:
 ```bash
 echo "VITE_API_URL=http://localhost:8000" > .env
 ```
 
-Install dependencies:
+Install the packages:
 ```bash
 npm install
 ```
 
-Run the development server:
+Start the development server:
 ```bash
 npm run dev
 ```
-The frontend application will start at `http://localhost:5173`.
+The application will run locally at `http://localhost:5173`.
 
 ---
 
-## 📖 Usage
-
-1.  **Home Page**: Read about mutual funds and why investing is important.
-2.  **Find Recommendation**: Click "Find suitable Mutual funds", fill out the questionnaire, and get personalized fund suggestions.
-3.  **Calculators**: Use the SIP, SWP, and Real Returns calculators from the navigation menu to plan your investments.
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 Mutual-Funds-Recommendation-website/
 ├── backend/
-│   ├── main.py          # FastAPI app & API routes
-│   ├── model.py         # KNN recommendation model
-│   ├── funds.csv        # Mutual funds dataset (814 funds)
+│   ├── main.py          # FastAPI application & endpoints
+│   ├── model.py         # KNN model training & inference
+│   ├── funds.csv        # Mutual funds database
 │   └── requirements.txt # Python dependencies
 └── frontend/
     ├── src/
-    │   ├── App.jsx       # Main React application
-    │   └── components/   # React components
+    │   ├── App.jsx       # Main React entry point
+    │   └── components/   # UI components (SIP, SWP, Questionnaire, etc.)
     ├── index.html
     └── package.json
 ```
 
 ---
 
-## 📊 Model Performance
+## Model Evaluation
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Algorithm | K-Nearest Neighbors (k=10) |
-| Dataset | 814 Mutual Funds |
-| LOO Risk-Class Accuracy | **90.91%** |
-| Catalog Coverage | **99.02%** |
-| Mean Sharpe Ratio | **1.17** |
+| Dataset Size | 814 Mutual Funds |
+| Leave-One-Out (LOO) Risk-Class Accuracy | 90.91% |
+| Catalog Coverage | 99.02% |
+| Mean Sharpe Ratio | 1.17 |
 
 ---
 
-## 📄 License
+## License
 
-This is an academic project and not intended for commercial use.
+This is an academic project and is not intended for commercial use or financial advisory purposes.

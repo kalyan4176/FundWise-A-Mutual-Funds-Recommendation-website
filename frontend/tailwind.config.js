@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#4F46E5', // Indigo 600
+        primary: '#1d3557', // Navy Blue
         secondary: '#10B981', // Emerald 500
         dark: '#1F2937', // Gray 800
         light: '#F3F4F6', // Gray 100

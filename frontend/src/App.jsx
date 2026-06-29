@@ -59,15 +59,10 @@ function App() {
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center cursor-pointer"
             onClick={() => handleNavClick('home')}
           >
-            <div className="bg-primary text-white p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
-            </div>
-            <h1 className="text-xl font-bold text-gray-900">MF Recommender</h1>
+            <img src="/logo.png" alt="FundWise Logo" className="h-10 md:h-12 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
@@ -127,31 +122,31 @@ function App() {
             <div className="px-4 pt-2 pb-4 space-y-1">
               <button
                 onClick={() => handleNavClick('home')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'home' ? 'bg-indigo-50 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'home' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 Home
               </button>
               <button
                 onClick={() => handleNavClick('questionnaire')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'questionnaire' || view === 'results' ? 'bg-indigo-50 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'questionnaire' || view === 'results' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 Find suitable Mutual funds
               </button>
               <button
                 onClick={() => handleNavClick('sip')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'sip' ? 'bg-indigo-50 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'sip' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 SIP Calculator
               </button>
               <button
                 onClick={() => handleNavClick('swp')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'swp' ? 'bg-indigo-50 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'swp' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 SWP Calculator
               </button>
               <button
                 onClick={() => handleNavClick('realReturns')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'realReturns' ? 'bg-indigo-50 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'realReturns' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 Real Returns Calculator
               </button>
@@ -212,7 +207,7 @@ function App() {
       <footer className="bg-white border-t mt-auto">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
           <p className="text-center text-gray-500 text-sm mb-2">
-            © 2025 MF Recommender. All rights reserved.
+            © 2026 FundWise. All rights reserved.
           </p>
           <p className="text-center text-xs text-gray-400">
             Mutual Fund investments are subject to market risks, read all scheme related documents carefully.
