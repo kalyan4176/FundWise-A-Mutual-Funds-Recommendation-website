@@ -122,31 +122,31 @@ function App() {
             <div className="px-4 pt-2 pb-4 space-y-1">
               <button
                 onClick={() => handleNavClick('home')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'home' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'home' ? 'bg-[#0075FF]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 Home
               </button>
               <button
                 onClick={() => handleNavClick('questionnaire')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'questionnaire' || view === 'results' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'questionnaire' || view === 'results' ? 'bg-[#0075FF]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 Find suitable Mutual funds
               </button>
               <button
                 onClick={() => handleNavClick('sip')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'sip' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'sip' ? 'bg-[#0075FF]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 SIP Calculator
               </button>
               <button
                 onClick={() => handleNavClick('swp')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'swp' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'swp' ? 'bg-[#0075FF]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 SWP Calculator
               </button>
               <button
                 onClick={() => handleNavClick('realReturns')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'realReturns' ? 'bg-[#1d3557]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${view === 'realReturns' ? 'bg-[#0075FF]/10 text-primary' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
               >
                 Real Returns Calculator
               </button>

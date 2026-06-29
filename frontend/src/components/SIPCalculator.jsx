@@ -119,7 +119,7 @@ const SIPCalculator = () => {
                             <span className="text-gray-600 font-medium">Est. Returns</span>
                             <span className="text-xl font-bold text-green-600">₹{results.estReturns.toLocaleString()}</span>
                         </div>
-                        <div className="flex justify-between items-center p-4 bg-[#1d3557]/5 rounded-xl border border-[#1d3557]/10">
+                        <div className="flex justify-between items-center p-4 bg-[#0075FF]/5 rounded-xl border border-[#0075FF]/10">
                             <span className="text-gray-800 font-bold">Total Value</span>
                             <span className="text-2xl font-extrabold text-primary">₹{results.totalValue.toLocaleString()}</span>
                         </div>
