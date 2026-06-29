@@ -151,7 +151,7 @@ const SWPCalculator = () => {
                             <span className="text-gray-600 font-medium">Total Withdrawal</span>
                             <span className="text-xl font-bold text-blue-600">₹{results.totalWithdrawal.toLocaleString()}</span>
                         </div>
-                        <div className="flex justify-between items-center p-4 bg-[#0075FF]/5 rounded-xl border border-[#0075FF]/10">
+                        <div className="flex justify-between items-center p-4 bg-[#2A7EF9]/5 rounded-xl border border-[#2A7EF9]/10">
                             <span className="text-gray-800 font-bold">Final Value</span>
                             <span className="text-2xl font-extrabold text-primary">₹{results.finalValue.toLocaleString()}</span>
                         </div>

@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#0075FF', // Vibrant Blue
+        primary: '#2A7EF9', // Soft Vibrant Blue
         secondary: '#10B981', // Emerald 500
         dark: '#1F2937', // Gray 800
         light: '#F3F4F6', // Gray 100
