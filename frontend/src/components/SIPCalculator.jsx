@@ -9,6 +9,10 @@ const SIPCalculator = () => {
         estReturns: 0,
         totalValue: 0
     });
+    const [hoveredSegment, setHoveredSegment] = useState(null); // null, 'invested', 'returns'
+
+    const invPercent = results.totalValue > 0 ? (results.investedAmount / results.totalValue) * 100 : 0;
+    const retPercent = results.totalValue > 0 ? (results.estReturns / results.totalValue) * 100 : 0;
 
     useEffect(() => {
         calculateSIP();
@@ -113,44 +117,81 @@ const SIPCalculator = () => {
                     <div className="space-y-6">
                         {/* Donut Chart */}
                         <div className="relative flex flex-col items-center justify-center mb-6">
-                            <div className="relative flex items-center justify-center">
-                                <svg width="160" height="160" viewBox="0 0 120 120" className="transform -rotate-90">
-                                    {/* Background Circle (Invested Amount) */}
+                            <div className="relative flex items-center justify-center w-full max-w-[180px] aspect-square">
+                                <svg viewBox="0 0 120 120" className="w-full h-full transform -rotate-90">
+                                    {/* Invested Amount slice */}
                                     <circle
                                         cx="60"
                                         cy="60"
                                         r="45"
                                         fill="transparent"
                                         stroke="#2A7EF9"
-                                        strokeWidth="12"
+                                        strokeWidth={hoveredSegment === 'invested' ? "15" : "10"}
+                                        strokeDasharray="282.74"
+                                        strokeDashoffset={results.totalValue > 0 ? 282.74 - (282.74 * (results.investedAmount / results.totalValue)) : 0}
+                                        className="transition-all duration-300 cursor-pointer origin-center"
+                                        onMouseEnter={() => setHoveredSegment('invested')}
+                                        onMouseLeave={() => setHoveredSegment(null)}
                                     />
-                                    {/* Foreground Circle (Estimated Returns) */}
+                                    {/* Estimated Returns slice */}
                                     <circle
                                         cx="60"
                                         cy="60"
                                         r="45"
                                         fill="transparent"
                                         stroke="#10B981"
-                                        strokeWidth="12"
+                                        strokeWidth={hoveredSegment === 'returns' ? "15" : "10"}
                                         strokeDasharray="282.74"
                                         strokeDashoffset={results.totalValue > 0 ? 282.74 - (282.74 * (results.estReturns / results.totalValue)) : 282.74}
+                                        style={{
+                                            transform: `rotate(${(results.investedAmount / (results.totalValue || 1)) * 360}deg)`,
+                                            transformOrigin: 'center'
+                                        }}
+                                        className="transition-all duration-300 cursor-pointer"
+                                        onMouseEnter={() => setHoveredSegment('returns')}
+                                        onMouseLeave={() => setHoveredSegment(null)}
                                     />
                                 </svg>
                                 {/* Inner Label */}
-                                <div className="absolute flex flex-col items-center justify-center text-center">
-                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Total Value</span>
-                                    <span className="text-base font-extrabold text-gray-800">
-                                        ₹{results.totalValue >= 10000000 ? `${(results.totalValue / 10000000).toFixed(2)}Cr` : results.totalValue >= 100000 ? `${(results.totalValue / 100000).toFixed(2)}L` : results.totalValue.toLocaleString()}
-                                    </span>
+                                <div className="absolute flex flex-col items-center justify-center text-center pointer-events-none px-2 w-[80%]">
+                                    {hoveredSegment === 'invested' ? (
+                                        <>
+                                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Invested</span>
+                                            <span className="text-sm font-extrabold text-gray-800">₹{results.investedAmount.toLocaleString()}</span>
+                                            <span className="text-[10px] text-[#2A7EF9] font-bold">{invPercent.toFixed(1)}%</span>
+                                        </>
+                                    ) : hoveredSegment === 'returns' ? (
+                                        <>
+                                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Est. Returns</span>
+                                            <span className="text-sm font-extrabold text-green-600">₹{results.estReturns.toLocaleString()}</span>
+                                            <span className="text-[10px] text-[#10B981] font-bold">{retPercent.toFixed(1)}%</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Total Value</span>
+                                            <span className="text-sm font-extrabold text-gray-800">
+                                                ₹{results.totalValue >= 10000000 ? `${(results.totalValue / 10000000).toFixed(2)}Cr` : results.totalValue >= 100000 ? `${(results.totalValue / 100000).toFixed(2)}L` : results.totalValue.toLocaleString()}
+                                            </span>
+                                            <span className="text-[8px] text-gray-400 font-medium">Hover chart</span>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             {/* Legend */}
                             <div className="flex space-x-6 mt-4 text-xs font-semibold text-gray-500">
-                                <div className="flex items-center space-x-2">
+                                <div 
+                                    className={`flex items-center space-x-2 cursor-pointer transition-opacity ${hoveredSegment && hoveredSegment !== 'invested' ? 'opacity-40' : 'opacity-100'}`}
+                                    onMouseEnter={() => setHoveredSegment('invested')}
+                                    onMouseLeave={() => setHoveredSegment(null)}
+                                >
                                     <span className="w-3 h-3 rounded-full bg-[#2A7EF9]"></span>
                                     <span>Invested</span>
                                 </div>
-                                <div className="flex items-center space-x-2">
+                                <div 
+                                    className={`flex items-center space-x-2 cursor-pointer transition-opacity ${hoveredSegment && hoveredSegment !== 'returns' ? 'opacity-40' : 'opacity-100'}`}
+                                    onMouseEnter={() => setHoveredSegment('returns')}
+                                    onMouseLeave={() => setHoveredSegment(null)}
+                                >
                                     <span className="w-3 h-3 rounded-full bg-[#10B981]"></span>
                                     <span>Est. Returns</span>
                                 </div>

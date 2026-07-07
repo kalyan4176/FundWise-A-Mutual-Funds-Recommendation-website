@@ -10,6 +10,7 @@ const RealReturnsCalculator = () => {
         realValue: 0,
         purchasingPowerLoss: 0
     });
+    const [hoveredBar, setHoveredBar] = useState(null); // null, 'nominal', 'real'
 
     useEffect(() => {
         calculateRealReturns();
@@ -142,22 +143,48 @@ const RealReturnsCalculator = () => {
 
                     <div className="space-y-8">
                         {/* Vertical Comparison Bar Chart */}
-                        <div className="flex justify-center items-end space-x-12 h-36 mb-6 pt-4 border-b border-gray-100 pb-4">
+                        <div className="flex justify-center items-end space-x-12 h-36 mb-2 pt-4 border-b border-gray-100 pb-4">
                             {/* Nominal Bar */}
-                            <div className="flex flex-col items-center space-y-2 h-full justify-end">
-                                <span className="text-xs font-bold text-gray-500">{formatCurrency(results.nominalValue)}</span>
-                                <div className="w-12 bg-[#2A7EF9] rounded-t-lg transition-all duration-500" style={{ height: '75%' }}></div>
-                                <span className="text-xs font-semibold text-gray-600">Nominal</span>
+                            <div 
+                                className="flex flex-col items-center space-y-2 h-full justify-end cursor-pointer group"
+                                onMouseEnter={() => setHoveredBar('nominal')}
+                                onMouseLeave={() => setHoveredBar(null)}
+                            >
+                                <span className={`text-xs font-bold transition-all duration-300 ${hoveredBar === 'nominal' ? 'text-primary scale-110' : 'text-gray-500'}`}>
+                                    {formatCurrency(results.nominalValue)}
+                                </span>
+                                <div 
+                                    className={`w-12 bg-[#2A7EF9] rounded-t-lg transition-all duration-300 ${hoveredBar === 'nominal' ? 'brightness-110 shadow-lg scale-x-105' : 'shadow-sm'}`} 
+                                    style={{ height: '70%' }}
+                                ></div>
+                                <span className={`text-xs font-semibold transition-colors duration-300 ${hoveredBar === 'nominal' ? 'text-primary font-bold' : 'text-gray-600'}`}>Nominal</span>
                             </div>
                             {/* Real Bar */}
-                            <div className="flex flex-col items-center space-y-2 h-full justify-end">
-                                <span className="text-xs font-bold text-green-600">{formatCurrency(results.realValue)}</span>
+                            <div 
+                                className="flex flex-col items-center space-y-2 h-full justify-end cursor-pointer group"
+                                onMouseEnter={() => setHoveredBar('real')}
+                                onMouseLeave={() => setHoveredBar(null)}
+                            >
+                                <span className={`text-xs font-bold transition-all duration-300 ${hoveredBar === 'real' ? 'text-green-600 scale-110' : 'text-green-600'}`}>
+                                    {formatCurrency(results.realValue)}
+                                </span>
                                 <div 
-                                    className="w-12 bg-[#10B981] rounded-t-lg transition-all duration-500" 
-                                    style={{ height: results.nominalValue > 0 ? `${(results.realValue / results.nominalValue) * 75}%` : '0%' }}
+                                    className={`w-12 bg-[#10B981] rounded-t-lg transition-all duration-300 ${hoveredBar === 'real' ? 'brightness-110 shadow-lg scale-x-105' : 'shadow-sm'}`} 
+                                    style={{ height: results.nominalValue > 0 ? `${(results.realValue / results.nominalValue) * 70}%` : '0%' }}
                                 ></div>
-                                <span className="text-xs font-semibold text-gray-600">Real Value</span>
+                                <span className={`text-xs font-semibold transition-colors duration-300 ${hoveredBar === 'real' ? 'text-green-600 font-bold' : 'text-gray-600'}`}>Real Value</span>
                             </div>
+                        </div>
+
+                        {/* Interactive Tooltip Explanation */}
+                        <div className="text-center text-xs text-gray-500 min-h-[48px] flex items-center justify-center px-4 bg-gray-50 rounded-lg py-2 transition-all duration-300">
+                            {hoveredBar === 'nominal' ? (
+                                <p className="animate-fade-in text-primary font-medium">Nominal value represents the raw face value of your money, before accounting for the purchasing power lost to inflation.</p>
+                            ) : hoveredBar === 'real' ? (
+                                <p className="animate-fade-in text-green-600 font-medium">Real value represents the actual purchasing power of your money in today's terms after adjusting for inflation.</p>
+                            ) : (
+                                <p className="text-gray-400">Hover over the bars to see details on inflation impact</p>
+                            )}
                         </div>
 
                         <div className="bg-[#2A7EF9]/5 p-4 rounded-lg">

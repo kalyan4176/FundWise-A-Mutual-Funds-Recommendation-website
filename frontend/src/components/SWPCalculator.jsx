@@ -9,6 +9,11 @@ const SWPCalculator = () => {
         totalWithdrawal: 0,
         finalValue: 0
     });
+    const [hoveredSegment, setHoveredSegment] = useState(null); // null, 'withdrawn', 'remaining'
+
+    const swpTotal = results.totalWithdrawal + results.finalValue;
+    const withdrawPercent = swpTotal > 0 ? (results.totalWithdrawal / swpTotal) * 100 : 0;
+    const finalPercent = swpTotal > 0 ? (results.finalValue / swpTotal) * 100 : 0;
 
     useEffect(() => {
         calculateSWP();
@@ -145,44 +150,81 @@ const SWPCalculator = () => {
                     <div className="space-y-6">
                         {/* Donut Chart */}
                         <div className="relative flex flex-col items-center justify-center mb-6">
-                            <div className="relative flex items-center justify-center">
-                                <svg width="160" height="160" viewBox="0 0 120 120" className="transform -rotate-90">
-                                    {/* Background Circle (Total Withdrawal) */}
+                            <div className="relative flex items-center justify-center w-full max-w-[180px] aspect-square">
+                                <svg viewBox="0 0 120 120" className="w-full h-full transform -rotate-90">
+                                    {/* Total Withdrawal slice */}
                                     <circle
                                         cx="60"
                                         cy="60"
                                         r="45"
                                         fill="transparent"
                                         stroke="#2A7EF9"
-                                        strokeWidth="12"
+                                        strokeWidth={hoveredSegment === 'withdrawn' ? "15" : "10"}
+                                        strokeDasharray="282.74"
+                                        strokeDashoffset={swpTotal > 0 ? 282.74 - (282.74 * (results.totalWithdrawal / swpTotal)) : 0}
+                                        className="transition-all duration-300 cursor-pointer origin-center"
+                                        onMouseEnter={() => setHoveredSegment('withdrawn')}
+                                        onMouseLeave={() => setHoveredSegment(null)}
                                     />
-                                    {/* Foreground Circle (Final Value) */}
+                                    {/* Remaining Value slice */}
                                     <circle
                                         cx="60"
                                         cy="60"
                                         r="45"
                                         fill="transparent"
                                         stroke="#10B981"
-                                        strokeWidth="12"
+                                        strokeWidth={hoveredSegment === 'remaining' ? "15" : "10"}
                                         strokeDasharray="282.74"
-                                        strokeDashoffset={(results.totalWithdrawal + results.finalValue) > 0 ? 282.74 - (282.74 * (results.finalValue / (results.totalWithdrawal + results.finalValue))) : 282.74}
+                                        strokeDashoffset={swpTotal > 0 ? 282.74 - (282.74 * (results.finalValue / swpTotal)) : 282.74}
+                                        style={{
+                                            transform: `rotate(${(results.totalWithdrawal / (swpTotal || 1)) * 360}deg)`,
+                                            transformOrigin: 'center'
+                                        }}
+                                        className="transition-all duration-300 cursor-pointer"
+                                        onMouseEnter={() => setHoveredSegment('remaining')}
+                                        onMouseLeave={() => setHoveredSegment(null)}
                                     />
                                 </svg>
                                 {/* Inner Label */}
-                                <div className="absolute flex flex-col items-center justify-center text-center">
-                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Total Value</span>
-                                    <span className="text-base font-extrabold text-gray-800">
-                                        ₹{(results.totalWithdrawal + results.finalValue) >= 10000000 ? `${((results.totalWithdrawal + results.finalValue) / 10000000).toFixed(2)}Cr` : (results.totalWithdrawal + results.finalValue) >= 100000 ? `${((results.totalWithdrawal + results.finalValue) / 100000).toFixed(2)}L` : (results.totalWithdrawal + results.finalValue).toLocaleString()}
-                                    </span>
+                                <div className="absolute flex flex-col items-center justify-center text-center pointer-events-none px-2 w-[80%]">
+                                    {hoveredSegment === 'withdrawn' ? (
+                                        <>
+                                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Withdrawn</span>
+                                            <span className="text-sm font-extrabold text-gray-800">₹{results.totalWithdrawal.toLocaleString()}</span>
+                                            <span className="text-[10px] text-[#2A7EF9] font-bold">{withdrawPercent.toFixed(1)}%</span>
+                                        </>
+                                    ) : hoveredSegment === 'remaining' ? (
+                                        <>
+                                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Remaining</span>
+                                            <span className="text-sm font-extrabold text-green-600">₹{results.finalValue.toLocaleString()}</span>
+                                            <span className="text-[10px] text-[#10B981] font-bold">{finalPercent.toFixed(1)}%</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Total Value</span>
+                                            <span className="text-sm font-extrabold text-gray-800">
+                                                ₹{swpTotal >= 10000000 ? `${(swpTotal / 10000000).toFixed(2)}Cr` : swpTotal >= 100000 ? `${(swpTotal / 100000).toFixed(2)}L` : swpTotal.toLocaleString()}
+                                            </span>
+                                            <span className="text-[8px] text-gray-400 font-medium">Hover chart</span>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             {/* Legend */}
                             <div className="flex space-x-6 mt-4 text-xs font-semibold text-gray-500">
-                                <div className="flex items-center space-x-2">
+                                <div 
+                                    className={`flex items-center space-x-2 cursor-pointer transition-opacity ${hoveredSegment && hoveredSegment !== 'withdrawn' ? 'opacity-40' : 'opacity-100'}`}
+                                    onMouseEnter={() => setHoveredSegment('withdrawn')}
+                                    onMouseLeave={() => setHoveredSegment(null)}
+                                >
                                     <span className="w-3 h-3 rounded-full bg-[#2A7EF9]"></span>
                                     <span>Total Withdrawn</span>
                                 </div>
-                                <div className="flex items-center space-x-2">
+                                <div 
+                                    className={`flex items-center space-x-2 cursor-pointer transition-opacity ${hoveredSegment && hoveredSegment !== 'remaining' ? 'opacity-40' : 'opacity-100'}`}
+                                    onMouseEnter={() => setHoveredSegment('remaining')}
+                                    onMouseLeave={() => setHoveredSegment(null)}
+                                >
                                     <span className="w-3 h-3 rounded-full bg-[#10B981]"></span>
                                     <span>Remaining Value</span>
                                 </div>
