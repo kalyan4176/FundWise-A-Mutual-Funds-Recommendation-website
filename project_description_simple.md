@@ -65,7 +65,7 @@ Main recommendation endpoint. Accepts a user profile and returns **10 fund recom
 
 **Output:** Array of 10 fund objects with scheme name, category, returns (1yr / 3yr / 5yr), sharpe ratio, expense ratio, risk level, fund size, AMC name, and more.
 
-**Swagger Docs:** `https://fundwise-a-mutual-funds-recommendation.onrender.com/docs`
+**Swagger Docs:** `https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com/docs`
 
 ---
 
@@ -126,8 +126,8 @@ Main recommendation endpoint. Accepts a user profile and returns **10 fund recom
 | | URL |
 |---|---|
 | 🖥️ App | https://fundwise-a-mutual-funds-recommendat.vercel.app |
-| ⚙️ API | https://fundwise-a-mutual-funds-recommendation.onrender.com |
-| 📖 Docs | https://fundwise-a-mutual-funds-recommendation.onrender.com/docs |
+| ⚙️ API | https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com |
+| 📖 Docs | https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com/docs |
 | 💻 GitHub | https://github.com/kalyan4176/Mutual-Funds-Recommendation-website |
 
 ---

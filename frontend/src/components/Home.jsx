@@ -4,7 +4,7 @@ const Home = ({ onStart }) => {
     return (
         <div className="animate-fade-in">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-[#2A7EF9]/8 to-white border border-[#2A7EF9]/20 rounded-3xl p-8 md:p-12 mb-12 shadow-sm">
+            <div className="bg-[#EEFDFC] border border-[#2A7EF9]/20 rounded-3xl p-8 md:p-12 mb-12 shadow-sm">
                 <div className="max-w-3xl">
                     <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-gray-900">
                         Grow Your Wealth with <span className="text-[#2A7EF9]">Mutual Funds</span>

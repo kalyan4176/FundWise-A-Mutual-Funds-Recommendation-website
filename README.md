@@ -7,8 +7,8 @@ FundWise is a full-stack web application that provides personalized mutual fund 
 | Service | URL |
 | --- | --- |
 | **Frontend Application** | [https://fundwise-a-mutual-funds-recommendat.vercel.app](https://fundwise-a-mutual-funds-recommendat.vercel.app) |
-| **Backend API** | [https://fundwise-a-mutual-funds-recommendation.onrender.com](https://fundwise-a-mutual-funds-recommendation.onrender.com) |
-| **API Documentation (Swagger)** | [https://fundwise-a-mutual-funds-recommendation.onrender.com/docs](https://fundwise-a-mutual-funds-recommendation.onrender.com/docs) |
+| **Backend API** | [https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com](https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com) |
+| **API Documentation (Swagger)** | [https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com/docs](https://fundwise-a-mutual-funds-recommendation-w7kl.onrender.com/docs) |
 
 *Note: The backend service is hosted on Render's free tier and may require 30 to 50 seconds to spin up after a period of inactivity. Subsequent requests are processed instantly.*
 
