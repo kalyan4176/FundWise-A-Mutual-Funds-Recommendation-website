@@ -141,6 +141,25 @@ const RealReturnsCalculator = () => {
                     <h3 className="text-xl font-semibold text-gray-700 mb-6 text-center">Projected Value after {years} Years</h3>
 
                     <div className="space-y-8">
+                        {/* Vertical Comparison Bar Chart */}
+                        <div className="flex justify-center items-end space-x-12 h-36 mb-6 pt-4 border-b border-gray-100 pb-4">
+                            {/* Nominal Bar */}
+                            <div className="flex flex-col items-center space-y-2 h-full justify-end">
+                                <span className="text-xs font-bold text-gray-500">{formatCurrency(results.nominalValue)}</span>
+                                <div className="w-12 bg-[#2A7EF9] rounded-t-lg transition-all duration-500" style={{ height: '75%' }}></div>
+                                <span className="text-xs font-semibold text-gray-600">Nominal</span>
+                            </div>
+                            {/* Real Bar */}
+                            <div className="flex flex-col items-center space-y-2 h-full justify-end">
+                                <span className="text-xs font-bold text-green-600">{formatCurrency(results.realValue)}</span>
+                                <div 
+                                    className="w-12 bg-[#10B981] rounded-t-lg transition-all duration-500" 
+                                    style={{ height: results.nominalValue > 0 ? `${(results.realValue / results.nominalValue) * 75}%` : '0%' }}
+                                ></div>
+                                <span className="text-xs font-semibold text-gray-600">Real Value</span>
+                            </div>
+                        </div>
+
                         <div className="bg-[#2A7EF9]/5 p-4 rounded-lg">
                             <p className="text-sm text-gray-600 mb-1">Nominal Maturity Value</p>
                             <p className="text-3xl font-bold text-primary">{formatCurrency(results.nominalValue)}</p>

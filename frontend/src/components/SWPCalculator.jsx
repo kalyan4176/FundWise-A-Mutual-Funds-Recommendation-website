@@ -143,6 +143,52 @@ const SWPCalculator = () => {
                 {/* Results */}
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col justify-center">
                     <div className="space-y-6">
+                        {/* Donut Chart */}
+                        <div className="relative flex flex-col items-center justify-center mb-6">
+                            <div className="relative flex items-center justify-center">
+                                <svg width="160" height="160" viewBox="0 0 120 120" className="transform -rotate-90">
+                                    {/* Background Circle (Total Withdrawal) */}
+                                    <circle
+                                        cx="60"
+                                        cy="60"
+                                        r="45"
+                                        fill="transparent"
+                                        stroke="#2A7EF9"
+                                        strokeWidth="12"
+                                    />
+                                    {/* Foreground Circle (Final Value) */}
+                                    <circle
+                                        cx="60"
+                                        cy="60"
+                                        r="45"
+                                        fill="transparent"
+                                        stroke="#10B981"
+                                        strokeWidth="12"
+                                        strokeDasharray="282.74"
+                                        strokeDashoffset={(results.totalWithdrawal + results.finalValue) > 0 ? 282.74 - (282.74 * (results.finalValue / (results.totalWithdrawal + results.finalValue))) : 282.74}
+                                    />
+                                </svg>
+                                {/* Inner Label */}
+                                <div className="absolute flex flex-col items-center justify-center text-center">
+                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Total Value</span>
+                                    <span className="text-base font-extrabold text-gray-800">
+                                        ₹{(results.totalWithdrawal + results.finalValue) >= 10000000 ? `${((results.totalWithdrawal + results.finalValue) / 10000000).toFixed(2)}Cr` : (results.totalWithdrawal + results.finalValue) >= 100000 ? `${((results.totalWithdrawal + results.finalValue) / 100000).toFixed(2)}L` : (results.totalWithdrawal + results.finalValue).toLocaleString()}
+                                    </span>
+                                </div>
+                            </div>
+                            {/* Legend */}
+                            <div className="flex space-x-6 mt-4 text-xs font-semibold text-gray-500">
+                                <div className="flex items-center space-x-2">
+                                    <span className="w-3 h-3 rounded-full bg-[#2A7EF9]"></span>
+                                    <span>Total Withdrawn</span>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <span className="w-3 h-3 rounded-full bg-[#10B981]"></span>
+                                    <span>Remaining Value</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
                             <span className="text-gray-600 font-medium">Total Investment</span>
                             <span className="text-xl font-bold text-gray-800">₹{parseFloat(totalInvestment).toLocaleString()}</span>
