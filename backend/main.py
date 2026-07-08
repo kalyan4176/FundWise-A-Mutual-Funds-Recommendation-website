@@ -38,6 +38,7 @@ class UserProfile(BaseModel):
     savings: Optional[float] = 0
 
 @app.get("/")
+@app.head("/")
 def read_root():
     return {"message": "Welcome to MF Recommender API"}
 
